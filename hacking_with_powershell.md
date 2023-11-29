@@ -114,5 +114,51 @@ $data = Get-Content 'b64.txt'
 [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($data))
 ```
 
+## Section 4:
+
+
+How many users are there on the machine?
+```powershell
+Get-LocalUser
+```
+
+Which local user does this SID(S-1-5-21-1394777289-3961777894-1791813945-501) belong to?
+```powershell
+Get-LocalUser -SID "S-1-5-21-1394777289-3961777894-1791813945-501"
+```
+
+How many users have their password required values set to False?
+```powershell 
+Get-LocalUser | Where-Object -Property PasswordRequired -Match false
+```
+
+How many local groups exist?
+```powershell
+Get-LocalGroup | measure
+```
+
+What command did you use to get the IP address info?
+```powershell
+Get-NetIPAddress
+```
+
+How many ports are listed as listening?
+```powershell
+Get-NetTCPconnection -State Listen | measure
+```
+
+What is the remote address of the local port listening on port 445?
+```powershell
+Get-NetTCPconnection -State Listen -LocalPort 445
+```
+
+How many patches have been applied?
+```powershell
+Get-HotFix | measure
+```
+
+
+
+
 
 
