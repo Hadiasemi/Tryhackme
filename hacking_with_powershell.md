@@ -65,11 +65,54 @@ Get-Service | Where-Object -Property Status -eq Stopped
 
 ## Sort Objects:
 
-```
+```powershell
 Get-ChildItem | Sort-Object
 ```
 
+## Section 3
+
+What is the location of the file "interesting-file.txt"?
+```powershell
+Get-ChildItem -r -Include *interst* -File -Recurse -ErrorAction SilentlyContinue
 ```
-Get-ChildItem -r -Include *interst*
+
+
+Specify the contents of this file?
+```powershell
+Get-Content -Path 'C:\Program Files\interesting-file.txt.txt'
 ```
+
+
+How many cmdlets are installed on the system(only cmdlets, not functions and aliases)?
+```powershell
+Get-Command | Where-Object -Property CommandType -eq Cmdlet | measure
+```
+
+
+Get the MD5 hash of interesting-file.txt
+```powershell
+Get-FileHash 'C:\Program Files\interesting-file.txt.txt' -Algorithm MD5
+```
+What is the command to get the current working directory?
+```powershell
+Get-Location
+```
+
+Does the path "C:\Users\Administrator\Documents\Passwords" Exist (Y/N)?
+```powershell 
+Get-Location "C:\Users\Administrator\Documents\Passwords"
+```
+
+What command would you use to make a request to a web server?
+```powershell
+Invoke-WebRequest -URI https://www.bing.com/search?q=how+many+feet+in+a+mile
+```
+
+Base64 decode the file b64.txt on Windows.
+```powershell
+$data = Get-Content 'b64.txt'
+[System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($data))
+```
+
+
 
