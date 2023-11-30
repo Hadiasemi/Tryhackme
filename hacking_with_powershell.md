@@ -188,3 +188,30 @@ GET-ACL is the answer you need.
 Get-Acl C:\
 ```
 
+# Section 5:
+
+For defining the variable we can use `$variable_name = value`. For interation 
+we can use `foreach($new_var in $existing_var){}`.
+
+```powershell
+$system_ports = Get-NetTCPConnection -State Listen
+
+$text_port = Get-Content -Path C:\Users\Administrator\Desktop\ports.txt
+
+foreach($port in $text_port){
+
+    if($port -in $system_ports.LocalPort){
+        echo $port
+     }
+
+}
+```
+
+What file contains the password?
+```powershell
+$path = 'C:\Users\Administrator\Desktop\emails\*'
+$magic_word = 'password'
+$exec = Get-ChildItem $path -recurse | Select-String -pattern $magic_word
+echo $exec
+```
+
