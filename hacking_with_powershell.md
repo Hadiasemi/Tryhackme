@@ -157,8 +157,34 @@ How many patches have been applied?
 Get-HotFix | measure
 ```
 
+When was the patch with ID KB4023834 installed?
+```powershell
+Get-HotFix -Id KB4023834
+```
 
 
+Find the contents of a backup file.
+```powershell
+Get-ChildItem -r -Include *.bak* -File 
+```
 
+Search for all files containing API_KEY
+```powershell
+Git-ChildItem -r | Select-String -pattern API_KEY
+```
 
+What command do you do to list all the running processes?
+```powershell
+Get-Process
+```
+
+What is the path of the scheduled task called new-sched-task?
+```powershell
+Get-Scheduledtask -TaskName new-sched-task
+```
+
+GET-ACL is the answer you need.
+```powershell
+Get-Acl C:\
+```
 
