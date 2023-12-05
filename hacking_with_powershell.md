@@ -215,3 +215,22 @@ $exec = Get-ChildItem $path -recurse | Select-String -pattern $magic_word
 echo $exec
 ```
 
+What files contains an HTTPS link?
+```powershell
+$path = 'C:\Users\Administrator\Desktop\emails\*'
+$magic_word = 'https://'
+$exec = Get-ChildItem $path -recurse | Select-String -pattern $magic_word
+echo $exec
+```
+
+# Section 6:
+
+Open ports on localhost between 130-140?
+```powershell
+foreach ($port in 1..1024) {
+  $result = Test-NetConnection -ComputerName "www.example.com" -Port $port -WarningAction SilentlyContinue
+  if ($result.TcpTestSucceeded) {
+      Write-Output "TCP port $port is open!"
+  }
+}
+```
