@@ -229,7 +229,7 @@ Open ports on localhost between 130-140?
 ```powershell
 foreach ($port in 1..1024) {
   $result = Test-NetConnection -ComputerName "www.example.com" -Port $port -WarningAction SilentlyContinue
-  if ($result.TcpTestSucceeded) {
+  if ($result.TcpTestSucceeded -or $result.PingSucceeded) {
       Write-Output "TCP port $port is open!"
   }
 }
